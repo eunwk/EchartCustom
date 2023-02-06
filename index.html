@@ -115,7 +115,24 @@
   }
 }
 
+/* 막대 프로그래스 */
+.bar-chart .bar {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: bar-ani 1s ease-out forwards;
+}
 
+@keyframes bar-ani {
+  from {
+    stroke-dashoffset: 280;
+    /* stroke-dashoffset: calc(-4.5px * var(--v)); */
+  }
+  to {
+    /* stroke-dashoffset: -300px; */
+    /* stroke-dashoffset: 150; */
+    stroke-dashoffset: calc(280px - (2.8px * (var(--v))));
+  }
+}
 
   </style>
 </head>
@@ -136,6 +153,17 @@
           <stop offset="1" stop-color="#eb657f"/>
         </linearGradient>
       </defs>
+    </svg>
+  </div>
+
+
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="280" height="12" viewBox="0 0 280 12" class="bar-chart">
+      <g id="rect_25307" data-name="rect 25307" fill="#f0f0f0" stroke="#eaeaea" stroke-width="1">
+        <rect width="280" height="12" rx="6" stroke="none"/>
+        <rect x="0.5" y="0.5" width="279" height="11" rx="5.5" fill="none"/>
+      </g>
+      <line id="line_1" class="bar" data-name="line 1" style="--v:70" x2="268" transform="translate(6 6)" fill="none" stroke="#eb657f" stroke-linecap="round" stroke-width="12"/>
     </svg>
   </div>
 
