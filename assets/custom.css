@@ -9,7 +9,7 @@ body {
   -webkit-text-size-adjust: none;
   background-color: #f1f1f1;
   color: #555;
-  padding: 20px;
+  padding: 80px 20px;
   font-weight: 300;
 }
 div, p {
@@ -17,14 +17,15 @@ div, p {
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 36px;
+  margin: 0 auto 50px;
+  text-align: center;
 }
 
 .chart-container {
   display: flex;
-  margin: 0px -10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-box {
@@ -38,6 +39,10 @@ h1 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.card-box.big {
+  width: 740px;
 }
 
 .card-title {
