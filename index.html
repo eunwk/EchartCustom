@@ -1,190 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-
-.skills-list .percent {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 0 auto 15px;
-}
-
-.skills-list .percent .number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.skills-list .percent .number span {
-  color: #bd9a39;
-  font-weight: bold;
-}
-.skills-list .percent .number span.od {
-  font-size: 50px !important;
-}
-
-.skills-list .percent .number span.unit {
-  font-size: 24px;
-  margin-left: 5px;
-}
-
-.skills-list .percent svg {
-  position: relative;
-  width: 150px;
-  height: 150px;
-}
-.skills-list .percent svg circle {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke-width: 10;
-  stroke: rgba(0, 0, 0, 0.05);
-  transform: translate(5px, 5px);
-  /* transform으로만 위치 이동 가능. position이나, margin 적용안됨 */
-  stroke-linecap: round;
-  cx: 70;
-  cy: 70;
-  r: 70;
-}
-.skills-list .percent svg circle:nth-child(2) {
-  /* stroke: #ccc; */
-  stroke: var(--barColor);
-  stroke-dasharray: 440px; /* 140*3.14 = 439.6*/
-  stroke-dashoffset: 10px; /* 140*3.14 = 439.6*/
-  /* transition: 0.3s; */
-  stroke-dashoffset: calc(440px - (440px * 0) / 100);
-  transition: 0.5s;
-  transition-timing-function: ease-out;
-}
-
-.skills-list li:nth-child(1) .percent svg circle:nth-child(2) {
-  animation-delay: 0.6s;
-}
-
-.skills-list li.showing .percent svg circle:nth-child(2) {
-  animation-name: percent-ani;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-}
-
-@keyframes percent-ani {
-  0% {
-    stroke-dashoffset: calc(440px - (440px * 0) / 100);
-  }
-  100% {
-    stroke-dashoffset: calc(440px - (440px * var(--percent)) / 100);
-   
-  }
-}
-
-/* half-chart */
-.half-chart {
-  transition: 2s;
-}
-
-
-.gra-bar {
-  /* 라인 총 길이 450px :  286 *3.14 = 898.04*/ 
-  stroke-dasharray: 450px;
-  /* stroke-dashoffset: 0; */
-  /* stroke-dashoffset: calc(-4.5px * var(--v)); */
-  animation: gra-bar-ani 0.7s linear forwards;
-}
-
-@keyframes gra-bar-ani {
-  from {
-    stroke-dashoffset: -450px;
-    /* stroke-dashoffset: calc(-4.5px * var(--v)); */
-  }
-  to {
-    /* stroke-dashoffset: -300px; */
-    stroke-dashoffset: calc((450px - (4.5px * (var(--v)))) * -1);
-  }
-}
-
-/* 막대 프로그래스 */
-.bar-chart .bar {
-    stroke-dasharray: 280;
-    stroke-dashoffset: 280;
-    animation: bar-ani 1s ease-out forwards;
-}
-
-@keyframes bar-ani {
-  from {
-    stroke-dashoffset: 280;
-    /* stroke-dashoffset: calc(-4.5px * var(--v)); */
-  }
-  to {
-    /* stroke-dashoffset: -300px; */
-    /* stroke-dashoffset: 150; */
-    stroke-dashoffset: calc(280px - (2.8px * (var(--v))));
-  }
-}
-
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/custom.css" />
+  <script language="javascript" src="assets/echarts.min.js"></script>  
+  <script language="javascript" src="assets/custom.js"></script>
 </head>
 <body>
-
-  <div>
-    <svg width="292" height="158" viewBox="0 0 292 158" fill="none" xmlns="http://www.w3.org/2000/svg" class="chart-half">
-      <path d="M286 152C286 71.3664 223.32 6 146 6C68.6801 6 6 71.3664 6 152" stroke="#eaeaea" stroke-width="12" stroke-linecap="round"/>
-      <path class="gra-bar" style="--v:70" d="M286 152C286 71.3664 223.32 6 146 6C68.6801 6 6 71.3664 6 152" stroke="url(#linear-gradient)" stroke-width="12" stroke-linecap="round"/>
-      <defs>
-        <linearGradient id="linear-gradient" y1="0.959" x2="0.985" y2="0.968" gradientUnits="objectBoundingBox">
-          <stop offset="0" stop-color="#3dbc2b"/>
-          <stop offset="0.177" stop-color="#3dbc2b"/>
-          <stop offset="0.355" stop-color="#ffbb39"/>
-          <stop offset="0.522" stop-color="#ffbb39"/>
-          <stop offset="0.695" stop-color="#ffbb39"/>
-          <stop offset="0.862" stop-color="#eb657f"/>
-          <stop offset="1" stop-color="#eb657f"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-
-
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="280" height="12" viewBox="0 0 280 12" class="bar-chart">
-      <g id="rect_25307" data-name="rect 25307" fill="#f0f0f0" stroke="#eaeaea" stroke-width="1">
-        <rect width="280" height="12" rx="6" stroke="none"/>
-        <rect x="0.5" y="0.5" width="279" height="11" rx="5.5" fill="none"/>
-      </g>
-      <line id="line_1" class="bar" data-name="line 1" style="--v:70" x2="268" transform="translate(6 6)" fill="none" stroke="#eb657f" stroke-linecap="round" stroke-width="12"/>
-    </svg>
-  </div>
-
-  <section class="scroll-section" id="section-skills">
-    <div class="sec-innerbox">
-        <ul class="skills-list">
-            <li class="box showing">
-                <div class="percent">
-                    <svg>
-                        <circle></circle>
-                        <circle style="--barColor:#cbc326; --percent:90"></circle>
-                    </svg>
-                    <div class="number">
-                        <span class="od">90</span><span class="unit">%</span>
-                    </div>
-                </div>
-               
-            </li>
-          </ul>
+<div class="body-container">
+  <h1>EChart 커스텀</h1>
+  <div class="chart-container">
+    
+    <div class="card-box">
+      <h2 class="card-title">Bar1</h2>
+      <div class="card-content" >
+        <div class="chart" id="barV-1" style="height: 300px"></div>
+        <div class="card-description">기본유형</div>
       </div>
-    </section>
- 
+    </div>
+
+    <div class="card-box">
+      <h2 class="card-title">Bar2</h2>
+      <div class="card-content" >
+        <div class="chart" id="barV-2" style="height: 300px"></div>
+        <div class="card-description">label 데이터 커스텀</div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <h2 class="card-title">Multi Bar</h2>
+      <div class="card-content" >
+        <div class="chart" id="multiBarV-1" style="height: 300px"></div>
+        <div class="card-description">label은 하나만 + label 커스텀, <br/>tooltip 데이터 커스텀(value에 % 추가)</div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <h2 class="card-title">Horizontal Bar</h2>
+      <div class="card-content bg-gray" >
+        <div class="chart-summary">목표량의 <span>78%</span>를 달성했어요!</div>
+        <div class="chart" id="barH-1" style="height: 50px"></div>
+        <div class="card-description">디스크립션</div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <h2 class="card-title">Horizontal Bar - Multi</h2>
+      <div class="card-content bg-gray" >
+        <div class="chart-summary">기본형 멀티 바</div>
+        <div class="chart" id="multiBarH-1" style="height: 50px"></div>
+
+        <div class="chart-summary">Custom Tooltip (Value)</div>
+        <div class="chart" id="multiBarH-2" style="height: 50px"></div>
+
+        <div class="chart-summary">Custom Tooltip (%)</div>
+        <div class="chart" id="multiBarH-3" style="height: 50px"></div>
+
+        <div class="card-description">tooltip 박스 커스텀,<br />total 값을 구한 뒤 percent 계산</div>
+      </div>
+    </div>
+
+
+    <div class="card-box">
+      <h2 class="card-title">파이차트</h2>
+      <div class="card-content" >
+        <div class="pie-chart-summary">총 접속 건수는<br /><span>11</span>건 입니다.</div>
+        <div class="chart" id="pie-1" style="height: 300px"></div>
+        <div class="card-description">디스크립션</div>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <h2 class="card-title">커스텀 차트(Echart 아님) - SVG</h2>
+      <div class="card-content" >
+        <div class="pie-chart-summary" style="margin-top: -10px;">미세먼지<br /><span style="font-size: 30px">위험</span></div>
+        <div class="chart" id="svg-1" style="height: 300px">
+          <svg width="280" height="152" viewBox="0 0 280 152" fill="none" xmlns="http://www.w3.org/2000/svg" class="chart-half">
+            <path d="M274 146C274 68.6801 214.006 6 140 6C65.9938 6 6 68.6801 6 146" stroke="#eaeaea" stroke-width="12" stroke-linecap="round"/>
+            <path class="gra-bar" id="graBar" d="M274 146C274 68.6801 214.006 6 140 6C65.9938 6 6 68.6801 6 146" stroke="url(#line-graient)" stroke-width="12" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="line-graient" y1="0.959" x2="0.985" y2="0.968" gradientUnits="objectBoundingBox" >
+                <stop stop-color="#2d99ff"/>
+                <stop offset="0.177" stop-color="#2d99ff"/>
+                <stop offset="0.355" stop-color="#ffbb39"/>
+                <stop offset="0.5" stop-color="#ffbb39"/>
+                <stop offset="0.695" stop-color="#ffbb39"/>
+                <stop offset="0.862" stop-color="#f46271"/>
+                <stop offset="1" stop-color="#f46271"/>
+              </linearGradient>
+            </defs>
+            </svg>
+          </div>
+        <div class="card-description">SVG 구현</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
