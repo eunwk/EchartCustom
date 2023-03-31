@@ -41,9 +41,10 @@ h1 {
   overflow: hidden;
 }
 
-.card-box.big {
+.card-box.size-m {
   width: 740px;
 }
+
 
 .card-title {
   height: 60px;
@@ -71,6 +72,20 @@ h1 {
   height: 340px;
   margin-bottom: 20px;
   /* background: #fafafa; */
+}
+
+/* 가로 비율대로 세로 높이가 늘어나는 박스 */
+.card-content.responsive-height  {
+  padding-top: 80%;
+}
+
+.card-content.responsive-height .chart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
 }
 
 .card-content .chart-summary {
@@ -201,4 +216,35 @@ h1 {
   100% {
     stroke-dashoffset: calc((450px - (4.5px * (var(--v)))) * -1);
   }
+}
+
+
+@media all and (max-width: 820px) {
+  .card-box {
+    width: 100%;
+    
+  }
+  
+  .card-box.size-m {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  body {
+
+    padding: 50px 0px;
+  }
+
+  .card-box {
+    width: 100%; 
+    background: #fff;
+    border: 0px;
+    border-bottom: 10px solid #fafafa;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0px;
+    display: block;
+  }
+
 }

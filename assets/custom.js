@@ -1182,6 +1182,8 @@ const barLine2 = () => {
   option && myChart.setOption(option);
 };
 
+
+
 window.addEventListener('load', () => {
  barChart1();
  barChart2();
@@ -1199,3 +1201,6 @@ window.addEventListener('load', () => {
  barLine2();
 })
 
+window.addEventListener('resize', () => {
+  window.location.reload();
+})
