@@ -13,6 +13,20 @@ body {
   padding: 80px 20px;
   font-weight: 300;
 }
+
+button {
+  appearance: none;
+  border-radius: 4px;
+  height: 24px;
+  padding: 0 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  height: 24px;
+  padding: 0 10px;
+}
+
 div,
 p {
   box-sizing: border-box;
@@ -265,17 +279,53 @@ h1 {
 }
 
 /* 배터리 서클 차트  */
-.circle-fill-new .circle-fill-path1 {
-  stroke-dasharray: 339px; /*(원지름 108*3.14159)*/
+
+.custom-circle {
+  position: relative;
+  width: 126px;
+}
+
+.custom-circle svg {
+  transform: rotate(-180deg);
+}
+
+.custom-circle .circle-fill-path1 {
+  stroke-dasharray: 339px; /*(원지름 108*3.14159) - 120px에서 보더 두께 뺌. */
   stroke-dashoffset: -339px; /* 선 숨김 */
-  animation: circle-bar-ani1 calc(var(--v) * 0.01s) cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.custom-circle .circle-fill-path2 {
+  stroke-dasharray: 257px; /*(원지름 82*3.14159)*/
+  stroke-dashoffset: -257px; /* 선 숨김 */
+}
+
+.custom-circle .chart-value {
+  opacity: 0;
+  transition: opacity 3s;
+  color: #fff;
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-circle.ani .chart-value {
+  opacity: 1;
+}
+
+.custom-circle .chart-value .txt-unit {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.custom-circle.ani .circle-fill-path1 {
+  animation: circle-bar-ani1 calc(var(--v) * 0.02s) cubic-bezier(0.4, 0, 0.2, 1)
     0.3s forwards;
 }
 
-.circle-fill-new .circle-fill-path2 {
-  stroke-dasharray: 257px; /*(원지름 82*3.14159)*/
-  stroke-dashoffset: -257px; /* 선 숨김 */
-  animation: circle-bar-ani2 calc(var(--v) * 0.01s) cubic-bezier(0.4, 0, 0.2, 1)
+.custom-circle.ani .circle-fill-path2 {
+  animation: circle-bar-ani2 calc(var(--v) * 0.02s) cubic-bezier(0.4, 0, 0.2, 1)
     0.3s forwards;
 }
 
@@ -293,26 +343,8 @@ h1 {
     stroke-dashoffset: -257px;
   }
   100% {
-    stroke-dashoffset: calc((257px - (2.57px * (var(--v)))) * -1);
+    stroke-dashoffset: calc(((257px) - (2.57px * (var(--v)))) * -1);
   }
-}
-.custom-circle {
-  position: relative;
-  border: 1px solid red;
-  width: 126px;
-}
-.custom-circle .chart-value {
-  color: #fff;
-  font-weight: 700;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.custom-circle .chart-value .txt-unit {
-  font-size: 11px;
-  font-weight: 400;
 }
 
 /* 배터리 서클 차트 끝 */

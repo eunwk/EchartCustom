@@ -13,7 +13,6 @@
     />
     <link rel="stylesheet" href="assets/custom.css" />
     <script language="javascript" src="assets/echarts.min.js"></script>
-    <script language="javascript" src="assets/custom.js"></script>
   </head>
 
   <body>
@@ -185,7 +184,7 @@
         </div>
 
         <div class="card-box">
-          <h2 class="card-title">Line 블록형</h2>
+          <h2 class="card-title">커스텀 차트(Echart 아님) - SVG</h2>
           <div class="card-content">
             <svg
               width="200"
@@ -334,113 +333,40 @@
         </div>
 
         <div class="card-box">
-          <h2 class="card-title">Line 블록형</h2>
-          <div class="card-content">
-            <svg
-              class="circle-fill"
-              width="200"
-              height="200"
-              viewBox="0 0 200 200"
+          <h2 class="card-title">커스텀 차트(Echart 아님) - SVG</h2>
+          <div class="card-content" style="background: #2c2c2c; padding: 20px">
+            <div
+              class="chart-box custom-circle"
+              id="customCircle1"
+              style="width: 120px; height: 120px; margin: 0 auto"
+            ></div>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                height: 24px;
+                gap: 8px;
+
+                margin: 30px auto;
+              "
             >
-              <circle
-                class="circle-fill-path"
-                cx="100"
-                cy="100"
-                r="90"
-                stroke="red"
-                stroke-width="10"
-                fill="none"
+              <input
+                type="number"
+                style="
+                  border: 1px solid #6f6f6f;
+                  background: transparent;
+                  color: #fff;
+                "
+                placeholder="0~100 사이 입력"
+                id="custom-circle-input"
               />
-              <circle
-                cx="100"
-                cy="100"
-                r="90"
-                stroke="#fff"
-                stroke-width="12"
-                fill="none"
-                stroke-dasharray="3, 20"
-              />
-
-              <circle
-                class="circle-fill-path2"
-                cx="100"
-                cy="100"
-                r="60"
-                stroke="red"
-                stroke-width="10"
-                fill="none"
-              />
-              <circle
-                class="small-path"
-                cx="100"
-                cy="100"
-                r="60"
-                stroke="#fff"
-                stroke-width="12"
-                fill="none"
-                stroke-dasharray="3, 20"
-              />
-            </svg>
-            <div class="card-description">디스크립션</div>
-          </div>
-        </div>
-
-        <div class="card-box">
-          <h2 class="card-title">Line 블록형</h2>
-          <div class="card-content" style="background: #2c2c2c">
-            <div class="chart-box custom-circle">
-              <svg
-                width="120"
-                height="120"
-                viewBox="0 0 120 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="circle-fill-new"
-                id="circle-fill-new"
+              <button
+                class="btn"
+                onclick="CustomCircleChart1.init().CustomCircleChart1.setValue(document.querySelector('#custom-circle-input').value);"
               >
-                <g clip-path="url(#clip0_15_299)">
-                  <path
-                    d="M60 114C89.8234 114 114 89.8234 114 60C114 30.1766 89.8234 6 60 6C30.1766 6 6 30.1766 6 60C6 89.8234 30.1766 114 60 114Z"
-                    stroke="#2C2C2C"
-                    stroke-width="10"
-                  />
-                  <path
-                    d="M60 114C89.8234 114 114 89.8234 114 60C114 30.1766 89.8234 6 60 6C30.1766 6 6 30.1766 6 60C6 89.8234 30.1766 114 60 114Z"
-                    stroke="#11A8F9"
-                    stroke-width="10"
-                    class="circle-fill-path1"
-                  />
-                  <path
-                    d="M60 114C89.8234 114 114 89.8234 114 60C114 30.1766 89.8234 6 60 6C30.1766 6 6 30.1766 6 60C6 89.8234 30.1766 114 60 114Z"
-                    stroke="#1E1D1D"
-                    stroke-width="12"
-                    stroke-dasharray="3 6"
-                  />
-                  <path
-                    d="M60 101C82.6437 101 101 82.6437 101 60C101 37.3563 82.6437 19 60 19C37.3563 19 19 37.3563 19 60C19 82.6437 37.3563 101 60 101Z"
-                    stroke="#2C2C2C"
-                    stroke-width="6"
-                  />
-                  <path
-                    d="M60 101C82.6437 101 101 82.6437 101 60C101 37.3563 82.6437 19 60 19C37.3563 19 19 37.3563 19 60C19 82.6437 37.3563 101 60 101Z"
-                    stroke="#11A8F9"
-                    stroke-width="5"
-                    class="circle-fill-path2"
-                  />
-                  <path
-                    d="M60 101C82.6437 101 101 82.6437 101 60C101 37.3563 82.6437 19 60 19C37.3563 19 19 37.3563 19 60C19 82.6437 37.3563 101 60 101Z"
-                    stroke="#1E1D1D"
-                    stroke-width="6"
-                    stroke-dasharray="3 4"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_15_299">
-                    <rect width="120" height="120" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <div class="chart-value">97<span class="txt-unit">%</span></div>
+                적용
+              </button>
             </div>
 
             <div class="card-description">디스크립션</div>
@@ -448,17 +374,17 @@
         </div>
       </div>
     </div>
-    <script>
-      const circleNem = () => {
-        const gradientBar = document.getElementById("circle-fill-new");
-        let chartValue = 50; // 차트에 적용될 데이터
-        let maxValue = 100; // 최대값
-        const calcValue = (chartValue / maxValue) * 100; //퍼센트 변환
-        gradientBar.style.setProperty("--v", calcValue);
-        gradientBar.classList.add("ani");
-      };
 
-      circleNem();
+    <script language="javascript" src="assets/custom.js"></script>
+
+    <script>
+      // 커스텀 차트 배터리형
+      const CustomCircleChart1 = new CustomCircleChart("#customCircle1", {
+        min: 0,
+        max: 100,
+        unit: "%",
+      });
+      CustomCircleChart1.setValue(70);
     </script>
   </body>
 </html>
